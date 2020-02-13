@@ -10,3 +10,5 @@
 - Select Project JDK (java development kit)
 - Select Project JRE (java runtime environment)
 - `Ctrl` + `Alt` + `F10` again. Project should compile and run after that
+
+don't forget to press apply button where it present.
