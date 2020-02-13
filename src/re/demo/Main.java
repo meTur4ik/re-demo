@@ -206,7 +206,7 @@ public class Main {
         noCompileEmail();
     }
 
-    public static void usernameCheck() {    //space here ↓
+    public static void usernameCheck() {  //space here ↓
         boolean matches = Pattern.matches("[\\w. -]{2,15}", ".asd3S");
         System.out.println(matches);
     }
