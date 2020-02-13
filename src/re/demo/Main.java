@@ -201,13 +201,13 @@ public class Main {
 
     public static void main(String[] args) {
         usernameCheck();
-        //noCompiledVsCompiledTime();
-        //compiledEmailGroups();
-        //noCompileEmail();
+        noCompiledVsCompiledTime();
+        compiledEmailGroups();
+        noCompileEmail();
     }
 
     public static void usernameCheck() {    //space here ↓
-        boolean matches = Pattern.matches("[\\w\\. -]{2,15}", ".asd3S");
+        boolean matches = Pattern.matches("[\\w. -]{2,15}", ".asd3S");
         System.out.println(matches);
     }
 
@@ -216,7 +216,7 @@ public class Main {
         long startNoCompiledTime = System.currentTimeMillis();
 
         for (String str : stringsForTest) {
-            boolean matches = Pattern.matches("[\\w\\. -]{2,15}", str);
+            boolean matches = Pattern.matches("[\\w. -]{2,15}", str);
         }
 
         long elapsedNoCompiledTime = System.currentTimeMillis() - startNoCompiledTime;
@@ -227,7 +227,7 @@ public class Main {
 
         long startCompiledTime = System.currentTimeMillis();
 
-        Pattern p = Pattern.compile("[\\w\\. -]{2,15}");
+        Pattern p = Pattern.compile("[\\w. -]{2,15}");
         for (String str : stringsForTest) {
             boolean matches = p.matcher(str).matches();
         }
@@ -237,13 +237,13 @@ public class Main {
     }
 
     public static void noCompileEmail() {
-        boolean matches = Pattern.matches("^([\\w\\-\\.]+)@([\\w]+)\\.(\\w{0,5})$", "a.sd-ee@sd.com");
+        boolean matches = Pattern.matches("^([\\w\\-.]+)@([\\w]+)\\.(\\w{2,5})$", "a.sd-ee@sd.com");
         System.out.println(matches);
     }
 
     // as seen here, compiling also gives way better API when you want to extract groups from RegEx
     public static void compiledEmailGroups() {
-        Pattern p = Pattern.compile("^([\\w\\-\\.]+)@([\\w]+)\\.(\\w{0,5})$");
+        Pattern p = Pattern.compile("^([\\w\\-.]{1,63})@([\\w]{1,63})\\.(\\w{1,63})$");
         Matcher m = p.matcher("a.sd1-ee@sd.com");
         if (m.matches()) {
             System.out.println("before `@`: " + m.group(1));
